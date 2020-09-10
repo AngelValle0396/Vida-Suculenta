@@ -34,12 +34,8 @@ public class Login extends AppCompatActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_login);
 
-
         mAuth = FirebaseAuth.getInstance();
-
-
         createRequest();
-
 
         findViewById(R.id.google_signIn).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -99,7 +95,7 @@ public class Login extends AppCompatActivity {
                             Intent intent = new Intent(getApplicationContext(),Profile.class);
                             startActivity(intent);
                         } else {
-                            Toast.makeText(Login.this, "Sorry auth failed.", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(Login.this, "Sorryauth failed.", Toast.LENGTH_SHORT).show();
                         }
                     }
                 });
