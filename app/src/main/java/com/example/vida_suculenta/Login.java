@@ -5,16 +5,10 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
-
-
 import android.os.Bundle;
-import android.util.Patterns;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Toast;
-
-import com.example.vida_suculenta.WebServices.WebService;
-import com.example.vida_suculenta.WebServices.Asynchtask;
 
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
@@ -29,21 +23,13 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
-import java.util.regex.Pattern;
 
-public class Login extends AppCompatActivity implements Asynchtask {
+public class Login extends AppCompatActivity {
     private GoogleSignInClient mGoogleSignInClient;
     private final static int RC_SIGN_IN = 123;
     private FirebaseAuth mAuth;
-    private ProgressDialog progreso;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -77,16 +63,32 @@ public class Login extends AppCompatActivity implements Asynchtask {
 
 
     }
-
-    private boolean validarEmail(String email) {
-        Pattern pattern = Patterns.EMAIL_ADDRESS;
-        return pattern.matcher(email).matches();
-    }
     private void signIn() {
 
-       Intent signInIntent = mGoogleSignInClient.getSignInIntent();
-        startActivityForResult(signInIntent, RC_SIGN_IN);
+        /*
+        if(usuario.getText().toString().trim().length()>0 && contrasenia.getText().toString().trim().length()>0) {
+            if (validarEmail(usuario.getText().toString().trim())) {
+                progreso = new ProgressDialog(this);
+                progreso.setMessage("Verificando...");
+                progreso.show();
+                Map<String, String> datos = new HashMap<String, String>();
+                datos.put("correo", usuario.getText().toString().trim());
+                datos.put("clave", contrasenia.getText().toString().trim());
+                WebService ws = new WebService("https://fotos-quito-liliana-zambrano.000webhostapp.com/login.php",
+                        datos, Login.this, Login.this);
+                ws.execute("POST");
+            } else {
+                Toast.makeText(this, "Correo Incorrecto", Toast.LENGTH_SHORT).show();
+            }
+        }else {
+            Toast.makeText(this, "Por favor llene todos los campos...", Toast.LENGTH_SHORT).show();
+        }
 
+         */
+
+
+        Intent signInIntent = mGoogleSignInClient.getSignInIntent();
+        startActivityForResult(signInIntent, RC_SIGN_IN);
     }
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -106,18 +108,8 @@ public class Login extends AppCompatActivity implements Asynchtask {
             }
         }
     }
-    private void validarUsuario(){
-        /*progreso = new ProgressDialog(this);
-        progreso.setMessage("Verificando...");
-        progreso.show();*/
-        Map<String, String> datos = new HashMap<String, String>();
-        GoogleSignInAccount signInAccount = GoogleSignIn.getLastSignedInAccount(this);
-        datos.put("correo",signInAccount.getDisplayName() );
-        WebService ws = new WebService("http://vida-suculenta.rf.gd/WebServices/consultarUsuario2.php",
-                datos, Login.this, Login.this);
-        ws.execute("POST");
-    }
     private void firebaseAuthWithGoogle(GoogleSignInAccount acct) {
+
 
         AuthCredential credential = GoogleAuthProvider.getCredential(acct.getIdToken(), null);
         mAuth.signInWithCredential(credential)
@@ -127,11 +119,8 @@ public class Login extends AppCompatActivity implements Asynchtask {
                         if (task.isSuccessful()) {
                             // Sign in success, update UI with the signed-in user's information
                             FirebaseUser user = mAuth.getCurrentUser();
-
-
-                            validarUsuario();
-
-
+                            Intent intent = new Intent(getApplicationContext(),Profile.class);
+                            startActivity(intent);
                         } else {
                             Toast.makeText(Login.this, "Sorryauth failed.", Toast.LENGTH_SHORT).show();
                         }
@@ -146,25 +135,5 @@ public class Login extends AppCompatActivity implements Asynchtask {
             Intent intent = new Intent(getApplicationContext(), Profile.class);
             startActivity(intent);
         }
-    }
-
-    @Override
-    public void processFinish(String result) throws JSONException {
-        JSONObject obj = new JSONObject(result);
-        List<String> lista= new ArrayList<>();
-        JSONArray arrayObject = (JSONArray) obj.get("Producto");
-        String resultado="";
-        for (int i=0;i<arrayObject.length();i++){
-            JSONObject object2 = (JSONObject) arrayObject.get(i);
-            resultado=object2.getString("ESTADO");
-        }
-        if (resultado.equals("1")){
-            Intent intent = new Intent(getApplicationContext(),Profile.class);
-            startActivity(intent);
-        }else
-        {
-            Toast.makeText(Login.this, "Usuario no registrado", Toast.LENGTH_SHORT).show();
-        }
-
     }
 }
