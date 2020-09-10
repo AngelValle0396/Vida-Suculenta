@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "812450020583",
+    "firebase_url": "https://vida-suculenta.firebaseio.com",
+    "project_id": "vida-suculenta",
+    "storage_bucket": "vida-suculenta.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:812450020583:android:cec6336dab7cc403183642",
+        "android_client_info": {
+          "package_name": "com.example.vida_suculenta"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "812450020583-fv3kct32dfrp3hr63b0jpf05gk897q8k.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.vida_suculenta",
+            "certificate_hash": "85d92c30377a468ae62dc956d7c94f14c3636920"
+          }
+        },
+        {
+          "client_id": "812450020583-1dpf55od9asr1va0fi7qurfpoosfr87a.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDTP-Np_eQGhJWAmEk8wbs_HNk2EU4hXd0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "812450020583-gr3oig4ss6hon3j5kai92nck1jnu8p9c.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
