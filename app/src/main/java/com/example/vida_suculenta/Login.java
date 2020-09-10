@@ -99,8 +99,11 @@ public class Login extends AppCompatActivity implements Asynchtask {
             Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
             try {
                 // Google Sign In was successful, authenticate with Firebase
-                GoogleSignInAccount account = task.getResult(ApiException.class);
+                  account = task.getResult(ApiException.class);
                 firebaseAuthWithGoogle(account);
+
+                    validarUsuario();
+
             } catch (ApiException e) {
                 // Google Sign In failed, update UI appropriately
                 // ...
@@ -115,12 +118,14 @@ public class Login extends AppCompatActivity implements Asynchtask {
         Map<String, String> datos = new HashMap<String, String>();
         String s="";
         GoogleSignInAccount signInAccount = GoogleSignIn.getLastSignedInAccount(this);
-        s=signInAccount.getEmail();
-        datos.put("correo",signInAccount.getEmail());
+        s=account.getEmail();
+        datos.put("correo",account.getEmail());
         WebService ws = new WebService("http://vida-suculenta.rf.gd/WebServices/consultarUsuario2.php",
                 datos, Login.this, Login.this);
         ws.execute("POST");
     }
+    Boolean bol=false;
+
     private void firebaseAuthWithGoogle(GoogleSignInAccount acct) {
 
         AuthCredential credential = GoogleAuthProvider.getCredential(acct.getIdToken(), null);
@@ -131,16 +136,13 @@ public class Login extends AppCompatActivity implements Asynchtask {
                         if (task.isSuccessful()) {
                             // Sign in success, update UI with the signed-in user's information
                             FirebaseUser user = mAuth.getCurrentUser();
-
-
-                            validarUsuario();
-
-
+                            bol=true;
                         } else {
                             Toast.makeText(Login.this, "Sorryauth failed.", Toast.LENGTH_SHORT).show();
                         }
                     }
                 });
+
     }
     @Override
     protected void onStart() {
