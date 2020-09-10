@@ -98,8 +98,6 @@ public class Login extends AppCompatActivity {
                             FirebaseUser user = mAuth.getCurrentUser();
                             Intent intent = new Intent(getApplicationContext(),Profile.class);
                             startActivity(intent);
-
-
                         } else {
                             Toast.makeText(Login.this, "Sorry auth failed.", Toast.LENGTH_SHORT).show();
                         }
