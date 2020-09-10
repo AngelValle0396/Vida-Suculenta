@@ -95,7 +95,7 @@ public class Login extends AppCompatActivity {
                             Intent intent = new Intent(getApplicationContext(),Profile.class);
                             startActivity(intent);
                         } else {
-                            Toast.makeText(Login.this, "Sorry auth failed.", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(Login.this, "Sorryauth failed.", Toast.LENGTH_SHORT).show();
                         }
                     }
                 });
