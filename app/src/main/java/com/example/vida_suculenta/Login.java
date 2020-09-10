@@ -3,6 +3,7 @@ package com.example.vida_suculenta;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -21,6 +22,9 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class Login extends AppCompatActivity {
     private GoogleSignInClient mGoogleSignInClient;
@@ -60,6 +64,29 @@ public class Login extends AppCompatActivity {
 
     }
     private void signIn() {
+
+        /*
+        if(usuario.getText().toString().trim().length()>0 && contrasenia.getText().toString().trim().length()>0) {
+            if (validarEmail(usuario.getText().toString().trim())) {
+                progreso = new ProgressDialog(this);
+                progreso.setMessage("Verificando...");
+                progreso.show();
+                Map<String, String> datos = new HashMap<String, String>();
+                datos.put("correo", usuario.getText().toString().trim());
+                datos.put("clave", contrasenia.getText().toString().trim());
+                WebService ws = new WebService("https://fotos-quito-liliana-zambrano.000webhostapp.com/login.php",
+                        datos, Login.this, Login.this);
+                ws.execute("POST");
+            } else {
+                Toast.makeText(this, "Correo Incorrecto", Toast.LENGTH_SHORT).show();
+            }
+        }else {
+            Toast.makeText(this, "Por favor llene todos los campos...", Toast.LENGTH_SHORT).show();
+        }
+
+         */
+
+
         Intent signInIntent = mGoogleSignInClient.getSignInIntent();
         startActivityForResult(signInIntent, RC_SIGN_IN);
     }
