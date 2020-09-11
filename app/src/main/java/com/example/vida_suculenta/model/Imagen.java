@@ -1,5 +1,11 @@
 package com.example.vida_suculenta.model;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
+
 public class Imagen {
 private String urlimagen;
 private String nombre;
@@ -44,4 +50,19 @@ private String descripcion;
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
     }
+
+    public Imagen(JSONObject item) throws JSONException {
+        urlimagen= item.getString("IMAGEN_REF");
+        nombre= item.getString("NOMBRE_PRODUCTO");
+        descripcion= item.getString("DESCRIPCION");
+        precio= item.getString("PRECIO");
+    }
+    public static ArrayList<Imagen> JsonObjectsBuild(JSONArray datos) throws JSONException {
+        ArrayList<Imagen> imagens = new ArrayList<>();
+        for (int i = 0; i < datos.length() ; i++) {
+            imagens.add(new Imagen(datos.getJSONObject(i)));
+        }
+        return imagens;
+    }
+
 }
