@@ -1,13 +1,18 @@
 package com.example.vida_suculenta;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Menu;
+import android.widget.Toast;
 
+import com.example.vida_suculenta.WebServices.Asynchtask;
+import com.example.vida_suculenta.WebServices.WebService;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
 
+import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
@@ -16,7 +21,15 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
-public class Main2Activity extends AppCompatActivity {
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+public class Main2Activity extends AppCompatActivity implements Asynchtask {
 
     private AppBarConfiguration mAppBarConfiguration;
 
@@ -45,6 +58,11 @@ public class Main2Activity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
+
+        Map<String, String> datos = new HashMap<String, String>();
+        WebService ws = new WebService("https://fotos-quito-liliana-zambrano.000webhostapp.com/login.php",
+                datos, Main2Activity.this, Main2Activity.this);
+        ws.execute("POST");
     }
 
     @Override
@@ -59,5 +77,16 @@ public class Main2Activity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         return NavigationUI.navigateUp(navController, mAppBarConfiguration)
                 || super.onSupportNavigateUp();
+    }
+
+    @Override
+    public void processFinish(String result) throws JSONException {
+        List<String> lista= new ArrayList<>();
+        JSONObject obj = new JSONObject(result);
+
+            lista.add(String.valueOf(obj.getInt("idusuario")));
+            lista.add(obj.getString("nombre").toString());
+            lista.add(obj.getString("ROL").toString());
+
     }
 }

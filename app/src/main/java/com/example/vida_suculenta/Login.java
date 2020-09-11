@@ -40,7 +40,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.regex.Pattern;
 
-public class Login extends AppCompatActivity  {
+public class Login extends AppCompatActivity implements Asynchtask {
     private GoogleSignInClient mGoogleSignInClient;
     private final static int RC_SIGN_IN = 123;
     private FirebaseAuth mAuth;
@@ -100,9 +100,8 @@ public class Login extends AppCompatActivity  {
             try {
                 // Google Sign In was successful, authenticate with Firebase
                   account = task.getResult(ApiException.class);
-                firebaseAuthWithGoogle(account);
-
-                    //validarUsuario();
+                  firebaseAuthWithGoogle(account);
+                  validarUsuario();
 
             } catch (ApiException e) {
                 // Google Sign In failed, update UI appropriately
@@ -111,7 +110,20 @@ public class Login extends AppCompatActivity  {
             }
         }
     }
-
+    private void validarUsuario(){
+        /*progreso = new ProgressDialog(this);
+        progreso.setMessage("Verificando...");
+        progreso.show();*/
+        Map<String, String> datos = new HashMap<String, String>();
+        String s="";
+        GoogleSignInAccount signInAccount = GoogleSignIn.getLastSignedInAccount(this);
+        s=account.getEmail();
+        datos.put("correo",account.getEmail());
+        WebService ws = new WebService("http://vida-suculenta.rf.gd/WebServices/consultarUsuario2.php",
+                datos, Login.this, Login.this);
+        ws.execute("POST");
+    }
+    Boolean bol=false;
 
     private void firebaseAuthWithGoogle(GoogleSignInAccount acct) {
 
@@ -123,8 +135,7 @@ public class Login extends AppCompatActivity  {
                         if (task.isSuccessful()) {
                             // Sign in success, update UI with the signed-in user's information
                             FirebaseUser user = mAuth.getCurrentUser();
-                            Intent intent = new Intent(getApplicationContext(),Profile.class);
-                            startActivity(intent);
+                            bol=true;
                         } else {
                             Toast.makeText(Login.this, "Sorryauth failed.", Toast.LENGTH_SHORT).show();
                         }
@@ -137,11 +148,28 @@ public class Login extends AppCompatActivity  {
         super.onStart();
         FirebaseUser user = mAuth.getCurrentUser();
         if(user!=null){
-
             Intent intent = new Intent(getApplicationContext(), Profile.class);
             startActivity(intent);
         }
     }
 
+    @Override
+    public void processFinish(String result) throws JSONException {
+        JSONObject obj = new JSONObject(result);
+        List<String> lista= new ArrayList<>();
+        JSONArray arrayObject = (JSONArray) obj.get("Producto");
+        String resultado="";
+        for (int i=0;i<arrayObject.length();i++){
+            JSONObject object2 = (JSONObject) arrayObject.get(i);
+            resultado=object2.getString("ESTADO");
+        }
+        if (resultado.equals("1")){
+            Intent intent = new Intent(getApplicationContext(),Profile.class);
+            startActivity(intent);
+        }else
+        {
+            Toast.makeText(Login.this, "Usuario no registrado", Toast.LENGTH_SHORT).show();
+        }
 
+    }
 }
