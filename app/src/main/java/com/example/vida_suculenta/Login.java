@@ -136,10 +136,6 @@ public class Login extends AppCompatActivity implements Asynchtask {
                         if (task.isSuccessful()) {
                             // Sign in success, update UI with the signed-in user's information
                             FirebaseUser user = mAuth.getCurrentUser();
-                            TextView head= findViewById(R.id.nombreUs);
-                            head.setText(account.getDisplayName());
-                            TextView subhead=findViewById(R.id.correoUS);
-                            subhead.setText(account.getEmail());
                             Intent intent = new Intent(getApplicationContext(),Main2Activity.class);
                             startActivity(intent);
                             bol=true;

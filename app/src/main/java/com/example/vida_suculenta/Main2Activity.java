@@ -4,10 +4,13 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Menu;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.vida_suculenta.WebServices.Asynchtask;
 import com.example.vida_suculenta.WebServices.WebService;
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
@@ -32,7 +35,7 @@ import java.util.Map;
 public class Main2Activity extends AppCompatActivity   {
 
     private AppBarConfiguration mAppBarConfiguration;
-
+    GoogleSignInAccount account;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,6 +43,11 @@ public class Main2Activity extends AppCompatActivity   {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         FloatingActionButton fab = findViewById(R.id.fab);
+        //account= GoogleSignIn.getLastSignedInAccount(this);
+        //TextView head= findViewById(R.id.nombreUs);
+        //head.setText(account.getDisplayName());
+        //TextView subhead=findViewById(R.id.correoUS);
+        //subhead.setText(account.getEmail());
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

@@ -99,17 +99,17 @@ public class GalleryFragment extends Fragment implements Asynchtask  {
                 "ID_CATALO_PRO: \"2\",\n" +
                 "ID_PRODUCTO: \"12\",\n" +
                 "ID_CATALOGO: \"1\",\n" +
-                "NOMBRE_PRODUCTO: \"Terrario pecera\",\n" +
+                "NOMBRE_PRODUCTO: \"Terrario colgante \",\n" +
                 "PRECIO: \"25\",\n" +
                 "DESCRIPCION: \"Terrario Pecera tipo copa mediana, colores, plantas, mensajes totalmente. personalizables\",\n" +
-                "IMAGEN_REF: \"https://vidasuculenta.000webhostapp.com/images/pecera_copa1.jpg\",\n" +
+                "IMAGEN_REF: \"https://vidasuculenta.000webhostapp.com/images/terrario_colgante3.jpg\",\n" +
                 "DISPONIBLE: \"1\"\n" +
                 "},\n" +
                 "{\n" +
                 "ID_CATALO_PRO: \"3\",\n" +
                 "ID_PRODUCTO: \"13\",\n" +
                 "ID_CATALOGO: \"1\",\n" +
-                "NOMBRE_PRODUCTO: \"Terrario pecera\",\n" +
+                "NOMBRE_PRODUCTO: \"Terrario pecera mediana\",\n" +
                 "PRECIO: \"20\",\n" +
                 "DESCRIPCION: \"Peceras mediana con accesorios miniaturas, colores, plantas, mensajes, accesorios, personajes totalmente personalizables.\",\n" +
                 "IMAGEN_REF: \"https://vidasuculenta.000webhostapp.com/images/pecera_media1.jpg\",\n" +
@@ -119,10 +119,10 @@ public class GalleryFragment extends Fragment implements Asynchtask  {
                 "ID_CATALO_PRO: \"4\",\n" +
                 "ID_PRODUCTO: \"14\",\n" +
                 "ID_CATALOGO: \"1\",\n" +
-                "NOMBRE_PRODUCTO: \"Terrario pecera\",\n" +
+                "NOMBRE_PRODUCTO: \"Terrario colgante\",\n" +
                 "PRECIO: \"8\",\n" +
                 "DESCRIPCION: \"Peceras pequeñas, colores, plantas, mensajes totalmente personalizables.\",\n" +
-                "IMAGEN_REF: \"https://vidasuculenta.000webhostapp.com/images/pecera_pequeña1.jpg\",\n" +
+                "IMAGEN_REF: \"https://vidasuculenta.000webhostapp.com/images/terrario_colgante2.jpg\",\n" +
                 "DISPONIBLE: \"1\"\n" +
                 "},\n" +
                 "{\n" +
@@ -142,7 +142,7 @@ public class GalleryFragment extends Fragment implements Asynchtask  {
                 "NOMBRE_PRODUCTO: \"Terrario bello\",\n" +
                 "PRECIO: \"30\",\n" +
                 "DESCRIPCION: \"Terrarios con accesorios, colores, plantas, mensajes totalmente personalizables.\",\n" +
-                "IMAGEN_REF: \"https://vidasuculenta.000webhostapp.com/images/terrario_bello2.jpg\",\n" +
+                "IMAGEN_REF: \"https://vidasuculenta.000webhostapp.com/images/terrario_colgante5.jpg\",\n" +
                 "DISPONIBLE: \"1\"\n" +
                 "},\n" +
                 "{\n" +

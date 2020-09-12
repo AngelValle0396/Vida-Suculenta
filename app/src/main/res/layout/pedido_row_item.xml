@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="130dp"
+    android:layout_marginTop="10dp"
+    android:background="#E5E6E6"
+    android:layout_marginLeft="4dp"
+    android:layout_marginRight="8dp"
+    android:orientation="horizontal">
+
+
+    <ImageView
+        android:id="@+id/imagenp"
+        android:layout_width="125dp"
+        android:layout_height="125dp"
+        android:src="@drawable/vidasuculenta"/>
+
+    <LinearLayout
+
+        android:layout_width="277dp"
+        android:layout_height="123dp"
+        android:orientation="vertical"
+        android:padding="5dp">
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="25dp"/>
+        <TextView
+            android:id="@+id/nombreP"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/artifika"
+            android:text="Nombre producto"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/fechaP"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/artifika"
+            android:text="Fecha del pedido"
+            android:textSize="12sp"
+            android:textStyle="normal" />
+
+        <TextView
+            android:id="@+id/precioP"
+            android:layout_width="fill_parent"
+            android:fontFamily="@font/artifika"
+            android:layout_height="wrap_content"
+            android:text="Precio"
+            android:textSize="12sp"
+            android:textStyle="normal" />
+
+        <TextView
+            android:id="@+id/estadoP"
+            android:fontFamily="@font/artifika"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="Estado"
+            android:textSize="12sp"
+            android:textStyle="normal" />
+
+    </LinearLayout>
+</LinearLayout>

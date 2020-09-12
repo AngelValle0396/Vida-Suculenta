@@ -9,12 +9,13 @@
             android:icon="@drawable/ic_menu_gallery"
             android:title="Catálago" />
         <item
-            android:id="@+id/nav_slideshow"
-            android:icon="@drawable/ic_menu_slideshow"
-            android:title="Contáctenos" />
-        <item
             android:id="@+id/nav_home"
             android:icon="@drawable/ic_menu_camera"
             android:title="Mis pedidos" />
+        <item
+            android:id="@+id/nav_slideshow"
+            android:icon="@drawable/ic_menu_slideshow"
+            android:title="Contáctenos" />
+
     </group>
 </menu>
