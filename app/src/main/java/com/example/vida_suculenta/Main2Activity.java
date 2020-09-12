@@ -29,7 +29,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class Main2Activity extends AppCompatActivity implements Asynchtask {
+public class Main2Activity extends AppCompatActivity   {
 
     private AppBarConfiguration mAppBarConfiguration;
 
@@ -59,10 +59,7 @@ public class Main2Activity extends AppCompatActivity implements Asynchtask {
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
 
-        Map<String, String> datos = new HashMap<String, String>();
-        WebService ws = new WebService("https://fotos-quito-liliana-zambrano.000webhostapp.com/login.php",
-                datos, Main2Activity.this, Main2Activity.this);
-        ws.execute("POST");
+
     }
 
     @Override
@@ -79,14 +76,5 @@ public class Main2Activity extends AppCompatActivity implements Asynchtask {
                 || super.onSupportNavigateUp();
     }
 
-    @Override
-    public void processFinish(String result) throws JSONException {
-        List<String> lista= new ArrayList<>();
-        JSONObject obj = new JSONObject(result);
 
-            lista.add(String.valueOf(obj.getInt("idusuario")));
-            lista.add(obj.getString("nombre").toString());
-            lista.add(obj.getString("ROL").toString());
-
-    }
 }

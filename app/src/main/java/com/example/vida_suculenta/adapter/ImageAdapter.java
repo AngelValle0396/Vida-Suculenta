@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -24,6 +25,7 @@ public class ImageAdapter extends RecyclerView.Adapter<ImageAdapter.MyViewHolder
 
     private Context mContext ;
     private ArrayList<Imagen> mData ;
+    private AdapterView.OnItemClickListener itemClickListener;
 
     public ImageAdapter (Context context, ArrayList<Imagen> lista){
         mContext= context;
@@ -55,6 +57,7 @@ public class ImageAdapter extends RecyclerView.Adapter<ImageAdapter.MyViewHolder
         holder.imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 Intent intent = new Intent(mContext, DetalleProducto.class);
 
                 // passing data to the book activity
@@ -72,6 +75,7 @@ public class ImageAdapter extends RecyclerView.Adapter<ImageAdapter.MyViewHolder
         return mData.size();
     }
 
+
     public class MyViewHolder extends RecyclerView.ViewHolder {
         TextView titulo, descripcion, precio;
         ImageView imageView ;
@@ -79,6 +83,7 @@ public class ImageAdapter extends RecyclerView.Adapter<ImageAdapter.MyViewHolder
             super(itemView);
             titulo =  itemView.findViewById(R.id.title);
             imageView = (ImageView)itemView.findViewById(R.id.image);
+
         }
     }
 
@@ -150,6 +155,5 @@ public class ImageAdapter extends RecyclerView.Adapter<ImageAdapter.MyViewHolder
             imageView = (ImageView)itemView.findViewById(R.id.);
         }
     }
-
 */
 }

@@ -24,7 +24,7 @@
 
     <Space
         android:layout_width="match_parent"
-        android:layout_height="50dp"/>
+        android:layout_height="25dp"/>
 
 
     <Button
@@ -32,8 +32,23 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
 
+        android:backgroundTint="#3BA640"
         android:elevation="8dp"
         android:text="Ingresar con su cuenta de Google"
+        android:textColor="#fff" />
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="25dp"/>
+
+    <Button
+        android:id="@+id/google_regIn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+
+        android:backgroundTint="#F8246D"
+        android:elevation="8dp"
+        android:text="Registrarse con su cuenta de Google"
         android:textColor="#fff" />
 
 

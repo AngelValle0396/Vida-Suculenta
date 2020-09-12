@@ -11,6 +11,10 @@ private String urlimagen;
 private String nombre;
 private String descripcion;
 
+    public Imagen( ) {
+
+    }
+
     public Imagen(String urlimagen, String nombre, String descripcion, String precio) {
         this.urlimagen = urlimagen;
         this.nombre = nombre;

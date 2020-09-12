@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.util.Patterns;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.vida_suculenta.Profile;
@@ -101,7 +102,7 @@ public class Login extends AppCompatActivity implements Asynchtask {
                 // Google Sign In was successful, authenticate with Firebase
                   account = task.getResult(ApiException.class);
                   firebaseAuthWithGoogle(account);
-                  validarUsuario();
+                  //validarUsuario();
 
             } catch (ApiException e) {
                 // Google Sign In failed, update UI appropriately
@@ -135,6 +136,12 @@ public class Login extends AppCompatActivity implements Asynchtask {
                         if (task.isSuccessful()) {
                             // Sign in success, update UI with the signed-in user's information
                             FirebaseUser user = mAuth.getCurrentUser();
+                            TextView head= findViewById(R.id.nombreUs);
+                            head.setText(account.getDisplayName());
+                            TextView subhead=findViewById(R.id.correoUS);
+                            subhead.setText(account.getEmail());
+                            Intent intent = new Intent(getApplicationContext(),Main2Activity.class);
+                            startActivity(intent);
                             bol=true;
                         } else {
                             Toast.makeText(Login.this, "Sorryauth failed.", Toast.LENGTH_SHORT).show();
@@ -148,7 +155,7 @@ public class Login extends AppCompatActivity implements Asynchtask {
         super.onStart();
         FirebaseUser user = mAuth.getCurrentUser();
         if(user!=null){
-            Intent intent = new Intent(getApplicationContext(), Profile.class);
+            Intent intent = new Intent(getApplicationContext(), Main2Activity.class);
             startActivity(intent);
         }
     }
@@ -164,7 +171,7 @@ public class Login extends AppCompatActivity implements Asynchtask {
             resultado=object2.getString("ESTADO");
         }
         if (resultado.equals("1")){
-            Intent intent = new Intent(getApplicationContext(),Profile.class);
+            Intent intent = new Intent(getApplicationContext(),Main2Activity.class);
             startActivity(intent);
         }else
         {

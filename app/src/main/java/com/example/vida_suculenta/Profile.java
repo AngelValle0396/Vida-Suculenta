@@ -65,7 +65,7 @@ public class Profile extends AppCompatActivity /*implements Asynchtask */ {
 
     }
 
-    private void validarUsuario(String correo){
+    /*private void validarUsuario(String correo){
         progreso = new ProgressDialog(this);
         progreso.setMessage("Verificando...");
         progreso.show();
