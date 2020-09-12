@@ -31,8 +31,7 @@
         android:id="@+id/google_signIn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-
-        android:backgroundTint="#6FCD73"
+        android:background="@drawable/gradient_botoningresar"
         android:elevation="8dp"
         android:text="Ingresar con su cuenta de Google"
         android:textColor="#fff" />
@@ -44,9 +43,7 @@
         android:id="@+id/google_regIn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-
-
-        android:backgroundTint="#EDB664"
+        android:background="@drawable/gradient_botonregistro"
         android:elevation="8dp"
         android:text="Registrarse con su cuenta de Google"
         android:textColor="#fff" />
